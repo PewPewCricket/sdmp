@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 uint64_t getFileSize(char file[]);              // Declare Functions and globals
+
 unsigned char * readBinaryFile(char file[]);
 size_t size;
 
@@ -12,6 +13,7 @@ int main(int argc, char *argv[]) {              // Do the silly stuff that makes
         printf("%02X ", data[i]);
     }
     printf("\n");
+    return 0;
 }
 
 uint64_t getFileSize(char file[]) {             // Get the size of a file and return it
