@@ -35,7 +35,7 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/PewPewCricket/Dev/Util/bdump/src",
-      "program": "/home/PewPewCricket/Dev/Util/bdump/src/build/Debug/outDebug",
+      "program": "/home/PewPewCricket/Dev/Util/bdump/src/build/Release/outRelease",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
