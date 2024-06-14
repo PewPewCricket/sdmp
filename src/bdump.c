@@ -4,7 +4,6 @@
 
 int64_t getFileSize(char file[]);                                              // Declare Functions and globals
 unsigned char * readBinaryFile(char file[], int amount);
-uint64_t blocks;
 
 int main(int argc, char *argv[]) {                                              // Do the silly stuff that makes the program do the thing
     size_t maxAlloc = 10000;
@@ -19,7 +18,7 @@ int main(int argc, char *argv[]) {                                              
             printf("%02X ", data[i]);
         }
     } else {
-        blocks = fsize / maxAlloc;
+        uint64_t blocks = fsize / maxAlloc;
         if (fsize % maxAlloc != 0) {
             blocks++;
         }
@@ -40,9 +39,6 @@ int main(int argc, char *argv[]) {                                              
         }
     }
     printf("\n");
-    //printf("fsize: %lu   ", fsize);
-    //printf("maxAlloc: %lu   ", maxAlloc);
-    //printf("blocks: %lu   \n", blocks);
     return 0;
 } 
 
