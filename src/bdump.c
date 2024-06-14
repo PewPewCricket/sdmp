@@ -2,29 +2,29 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-int64_t getFileSize(char file[]);                                              // Declare Functions and globals
+int64_t getFileSize(char file[]);
 unsigned char * readBinaryFile(char file[], int amount);
 
-int main(int argc, char *argv[]) {                                              // Do the silly stuff that makes the program do the thing
+int main(int argc, char *argv[]) {
     size_t maxAlloc = 10000;
     size_t fsize = getFileSize(argv[1]);
-    if (fsize < 0) {
+    if (fsize < 0) { // Check if file could be opened
         printf("%s: file not found!", argv[1]);
         return -1;
     } 
-    if (fsize <= maxAlloc) {
+    if (fsize <= maxAlloc) { // Check if we are on the last block
         unsigned char * data = readBinaryFile(argv[1], fsize);
         for (uint64_t i = 0; i < fsize; i++) {
             printf("%02X ", data[i]);
         }
-    } else {
+    } else { // Print content in 10KiB blocks
         uint64_t blocks = fsize / maxAlloc;
         if (fsize % maxAlloc != 0) {
             blocks++;
         }
         for (uint64_t i = 0; i < blocks; i++) {
             unsigned char * data;
-            if (i == blocks - 1) {                                              // set amount to be allocated to reamining number of bytes to be read
+            if (i == blocks - 1) {
                 int bytesLeft = fsize - (i * maxAlloc);
                 data = readBinaryFile(argv[1], bytesLeft);
                 for (uint64_t i = 0; i < bytesLeft; i++) {
@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {                                              
     return 0;
 } 
 
-int64_t getFileSize(char file[]) {                                             // Get the size of a file and return it
+int64_t getFileSize(char file[]) { // Get the size of a given file and return it, if file can't be opened, return -1
     FILE *fptr = fopen(file, "rb");
     if (fptr == NULL) {
         return -1;
@@ -53,7 +53,7 @@ int64_t getFileSize(char file[]) {                                             /
     return size;
 }
 
-unsigned char * readBinaryFile(char file[], int amount) {                       // Read the file and store it's contents in an array in memory
+unsigned char * readBinaryFile(char file[], int amount) { // Read a given amount of data from a binary file and return a pointer to the array where the data is stored
     unsigned char * dptr = calloc(amount, 1);
     FILE *fptr = fopen(file, "rb");
     uint64_t dataRead = fread(dptr, 1, amount, fptr);
