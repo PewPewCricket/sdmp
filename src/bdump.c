@@ -12,30 +12,33 @@ int main(int argc, char *argv[]) {
         printf("%s: file not found!", argv[1]);
         return -1;
     } 
-    if (fsize <= maxAlloc) { // Check if we are on the last block
+    if (fsize <= maxAlloc) { // Check if file size is smaller or equal to the size of 1 block
         unsigned char * data = readBinaryFile(argv[1], fsize);
         for (uint64_t i = 0; i < fsize; i++) {
             printf("%02X ", data[i]);
         }
+        free(data);
     } else { // Print content in 10KiB blocks
         uint64_t blocks = fsize / maxAlloc;
         if (fsize % maxAlloc != 0) {
             blocks++;
         }
-        for (uint64_t i = 0; i < blocks; i++) {
+        for (uint64_t i = 0; i < blocks; i++) { // Data grab and print loop
             unsigned char * data;
-            if (i == blocks - 1) {
+            if (i == blocks - 1) { // Check if we are on last block
                 int bytesLeft = fsize - (i * maxAlloc);
                 data = readBinaryFile(argv[1], bytesLeft);
                 for (uint64_t i = 0; i < bytesLeft; i++) {
                     printf("%02X ", data[i]);
                 }
+                free(data);
                 break;
             }
             data = readBinaryFile(argv[1], maxAlloc);
             for (uint64_t i = 0; i < maxAlloc; i++) {
                 printf("%02X ", data[i]);
             }
+            free(data);
         }
     }
     printf("\n");
