@@ -2,40 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": false,
-      "linux": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "gdb",
-        "program": "${workspaceFolder}/output/main"
-      },
-      "osx": {
-        "MIMode": "lldb",
-        "miDebuggerPath": "lldb-mi",
-        "program": "${workspaceFolder}/output/main"
-      },
-      "windows": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "gdb.exe",
-        "program": "${workspaceFolder}/output/main.exe"
-      },
-      "preLaunchTask": "build"
-    },
-    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/PewPewCricket/Dev/Util/bdump/src",
-      "program": "/home/PewPewCricket/Dev/Util/bdump/src/build/Release/outRelease",
+      "cwd": "/home/PewPewCricket/Dev/Util/sdmp/src",
+      "program": "/home/PewPewCricket/Dev/Util/sdmp/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
