@@ -9,7 +9,8 @@ unsigned char * readBinaryFile(char file[], int amount);
 
 int main(int argc, char *argv[]) {
     if (argc > 2 || argc < 2) {
-        fprintf(stderr, "Usage: %s <file>", argv[0]);
+        fprintf(stderr, "Usage: %s <file>\n", argv[0]);
+        return -1;
     }
     int64_t maxAlloc = 10000;
     int64_t fsize = getFileSize(argv[1]);
