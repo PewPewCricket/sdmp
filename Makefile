@@ -78,6 +78,11 @@ clean:
 	$(RM) $(call FIXPATH,$(DEPS))
 	@echo Cleanup complete!
 
+.PHONY: install
+install:
+	cp $(OUTPUTMAIN) /usr/bin/sdmp
+	@echo Installation complete!
+
 run: all
 	./$(OUTPUTMAIN)
 	@echo Executing 'run: all' complete!
