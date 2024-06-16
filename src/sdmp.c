@@ -8,17 +8,13 @@ int64_t getFileSize(char file[]);
 unsigned char * readBinaryFile(char file[], int amount);
 
 int main(int argc, char *argv[]) {
-    if (argc > 2) {
-        printf("too many arguments!\n");
-        return -1;
-    } else if (argc < 2) {
-        printf("please provide a file!\n");
-        return -1;
+    if (argc > 2 || argc < 2) {
+        fprintf(stderr, "Usage: %s <file>", argv[0]);
     }
     int64_t maxAlloc = 10000;
     int64_t fsize = getFileSize(argv[1]);
     if (fsize == 0) { // Check if file could be opened
-        printf("%s: file not found!\n", argv[1]);
+        fprintf(stderr, "%s: file not found!\n", argv[1]);
         return -1;
     } 
     if (fsize <= maxAlloc) { // Check if file size is smaller or equal to the size of 1 block
